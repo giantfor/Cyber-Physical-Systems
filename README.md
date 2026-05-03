@@ -38,6 +38,10 @@ Sistem Smart Door Security adalah implementasi ide sistem keamanan pintu berbasi
 - Gateway WiFi untuk mengirim data ke server atau aplikasi smartphone
 - Notifikasi alert ke smartphone ketika pintu dibuka atau gerakan terdeteksi
 
+## Dashboard system
+<img width="897" height="791" alt="Dashboard" src="https://github.com/user-attachments/assets/f99d3638-7aae-426d-b72e-caa68e39b625" />
+
+
 ## Hardware yang Direkomendasikan
 
 - ESP32 DevKit atau modul ESP32 lain
