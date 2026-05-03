@@ -91,3 +91,7 @@ Lihat `pushover-example.md` untuk langkah konfigurasi `PUSHOVER_TOKEN`, `PUSHOVE
 
 <img width="1672" height="941" alt="Arsitektur Mobile" src="https://github.com/user-attachments/assets/160a234c-7b5d-4520-8b51-e40eca9abc83" />
 
+## Mockup
+
+<img width="941" height="1672" alt="mockup-1" src="https://github.com/user-attachments/assets/4431a379-ca7d-4288-ba19-26bf2c4150b9" />
+
