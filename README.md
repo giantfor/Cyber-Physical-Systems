@@ -95,3 +95,15 @@ Lihat `pushover-example.md` untuk langkah konfigurasi `PUSHOVER_TOKEN`, `PUSHOVE
 
 <img width="941" height="1672" alt="mockup-1" src="https://github.com/user-attachments/assets/4431a379-ca7d-4288-ba19-26bf2c4150b9" />
 
+<img width="709" height="1485" alt="mockup-2" src="https://github.com/user-attachments/assets/b0e0340b-e701-4f41-82c6-b02d821edc4e" />
+
+<img width="726" height="1484" alt="mockup-3" src="https://github.com/user-attachments/assets/42a5d5f0-3f34-4894-ae40-457ed49af317" />
+
+<img width="720" height="1479" alt="mockup-4" src="https://github.com/user-attachments/assets/106292cd-ec08-4689-87f8-96b88db71d1d" />
+
+<img width="727" height="1490" alt="mockup-5" src="https://github.com/user-attachments/assets/437b2fe9-deea-408a-8153-f76d8978ec0c" />
+
+<img width="718" height="1486" alt="mockup-6" src="https://github.com/user-attachments/assets/4abba411-6819-4bb2-99a7-66caf87e3941" />
+
+
+
