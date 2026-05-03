@@ -1,0 +1,7 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+
+# Platform-specific
+.DS_Store
+Thumbs.db
