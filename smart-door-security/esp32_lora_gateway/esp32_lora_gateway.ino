@@ -4,10 +4,14 @@
 #include <HTTPClient.h>
 
 // WiFi credentials
+// Ganti dengan nama jaringan WiFi dan password Anda.
 const char* WIFI_SSID = "YOUR_WIFI_SSID";
 const char* WIFI_PASSWORD = "YOUR_WIFI_PASSWORD";
 
 // Alamat server notifikasi local
+// Ganti dengan IP komputer atau server yang menjalankan
+// smart-door-security/server/notification_server.py
+// Contoh: "http://192.168.1.100:8000/alert"
 const char* NOTIFICATION_SERVER_URL = "http://192.168.1.100:8000/alert";
 
 // LoRa pin connection (sesuaikan board Anda)

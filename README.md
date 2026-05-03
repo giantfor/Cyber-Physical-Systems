@@ -51,6 +51,24 @@ Sistem Smart Door Security adalah implementasi ide sistem keamanan pintu berbasi
 - Resistor pembagi tegangan untuk pembacaan baterai
 - LED/status indicator
 
+## Konfigurasi Gateway
+
+Sebelum mengunggah sketch ke ESP32 gateway, pastikan Anda sudah mengisi nilai berikut di `esp32_lora_gateway/esp32_lora_gateway.ino`:
+
+- `WIFI_SSID` : nama jaringan WiFi Anda
+- `WIFI_PASSWORD` : kata sandi WiFi Anda
+- `NOTIFICATION_SERVER_URL` : alamat server notifikasi yang menjalankan `server/notification_server.py`
+
+Contoh:
+
+```cpp
+const char* WIFI_SSID = "MyHomeWiFi";
+const char* WIFI_PASSWORD = "MyPassword123";
+const char* NOTIFICATION_SERVER_URL = "http://192.168.1.100:8000/alert";
+```
+
+Pastikan komputer/server yang menjalankan `notification_server.py` memiliki alamat IP statis atau alamat yang dapat diakses dari ESP32 gateway.
+
 ## Petunjuk Umum
 
 1. Unggah sketch `esp32_door_security_node.ino` ke ESP32 sensor node.
