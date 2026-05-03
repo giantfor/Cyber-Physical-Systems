@@ -79,10 +79,6 @@ Pastikan komputer/server yang menjalankan `notification_server.py` memiliki alam
 6. Gunakan `pushover-example.md` untuk konfigurasi notifikasi smartphone.
 7. Jalankan `smartphone-webhook-app/server.py` untuk membuka dashboard webhook di browser smartphone.
 
-## Wiring Diagram
-
-Lihat file `diagram-wiring.txt` untuk ilustrasi wiring dalam format teks ASCII.
-
 ## Contoh Pushover
 
 Lihat `pushover-example.md` untuk langkah konfigurasi `PUSHOVER_TOKEN`, `PUSHOVER_USER`, dan contoh payload.
