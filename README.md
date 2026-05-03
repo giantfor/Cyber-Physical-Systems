@@ -87,7 +87,7 @@ Lihat file `diagram-wiring.txt` untuk ilustrasi wiring dalam format teks ASCII.
 
 Lihat `pushover-example.md` untuk langkah konfigurasi `PUSHOVER_TOKEN`, `PUSHOVER_USER`, dan contoh payload.
 
-## Aplikasi Smartphone Webhook Sederhana
+## Aplikasi Smartphone
 
-Terdapat contoh aplikasi smartphone berbasis browser di folder `smartphone-webhook-app/`.
-- `smartphone-webhook-app/index.html` : tampilan web untuk menampilkan alert.
+<img width="1672" height="941" alt="Arsitektur Mobile" src="https://github.com/user-attachments/assets/160a234c-7b5d-4520-8b51-e40eca9abc83" />
+
