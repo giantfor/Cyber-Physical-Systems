@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Door Alert</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f6f9; }
+    header { background: #1f6feb; color: white; padding: 16px; text-align: center; }
+    main { padding: 16px; }
+    .card { background: white; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,0.12); padding: 16px; margin-bottom: 16px; }
+    .status { display: flex; justify-content: space-between; align-items: center; }
+    .status span { font-weight: bold; }
+    .alert-list { list-style: none; padding: 0; margin: 0; }
+    .alert-list li { padding: 12px 0; border-bottom: 1px solid #eee; }
+    .alert-list li:last-child { border-bottom: none; }
+    footer { text-align: center; color: #666; padding: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Smart Door Alert</h1>
+    <p>Monitor notifikasi pintu secara realtime</p>
+  </header>
+  <main>
+    <div class="card">
+      <div class="status">
+        <div>
+          <div>Alert Terakhir</div>
+          <div id="last-alert" style="margin-top: 8px;">Menunggu data...</div>
+        </div>
+        <div id="last-time" style="font-size: 0.9rem; color: #555;"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Riwayat Alert</h2>
+      <ul class="alert-list" id="alert-list"></ul>
+    </div>
+  </main>
+  <footer>Refresh otomatis setiap 5 detik</footer>
+
+  <script>
+    async function loadAlerts() {
+      try {
+        const response = await fetch('/alert');
+        if (!response.ok) throw new Error('Gagal memuat data');
+        const data = await response.json();
+        const list = document.getElementById('alert-list');
+        const lastAlert = document.getElementById('last-alert');
+        const lastTime = document.getElementById('last-time');
+
+        if (data.alerts && data.alerts.length > 0) {
+          list.innerHTML = '';
+          data.alerts.slice(0, 8).forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            list.appendChild(li);
+          });
+          lastAlert.textContent = data.alerts[0];
+          lastTime.textContent = data.last_timestamp || '';
+        } else {
+          lastAlert.textContent = 'Belum ada alert';
+          lastTime.textContent = '';
+          list.innerHTML = '<li>Menunggu data dari server...</li>';
+        }
+      } catch (err) {
+        document.getElementById('last-alert').textContent = 'Tidak dapat terhubung';
+        document.getElementById('last-time').textContent = '';
+        document.getElementById('alert-list').innerHTML = '<li>' + err.message + '</li>';
+      }
+    }
+
+    loadAlerts();
+    setInterval(loadAlerts, 5000);
+  </script>
+</body>
+</html>

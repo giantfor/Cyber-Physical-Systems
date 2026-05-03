@@ -1,0 +1,63 @@
+Smart Door Security - Wiring Diagram (ASCII)
+
+1) Node ESP32 + Sensor Pintu + PIR + LoRa
+
+             +-------------------+
+             |      ESP32        |
+             |                   |
+             |   3.3V ----+      |
+             |            |      |
+             |           LoRa     |
+             |    5V -----+      |
+             |           /       |
+             |          /        |
+             |  GPIO18 -+ NSS    |
+             |  GPIO5 --+ SCK    |
+             |  GPIO27 -+ MOSI   |
+             |  GPIO19 -+ MISO   |
+             |  GPIO14 -+ RST    |
+             |  GPIO26 -+ DIO0   |
+             |                   |
+             |  GPIO34 --- Reed  |
+             |             Switch|
+             |  GPIO35 --- PIR   |
+             |  GPIO32 --- ADC   |
+             |                   |
+             +-------------------+
+
+- Reed switch pintu: satu sisi ke GPIO34, sisi lain ke GND.
+- Sensor PIR: VCC ke 5V atau 3.3V (sesuaikan modul), GND ke GND, OUT ke GPIO35.
+- Pembagi tegangan baterai: baterai positif ke R1, R1 ke GPIO32, GPIO32 ke R2, R2 ke GND.
+- LoRa modul: VCC 3.3V, GND ke GND, NSS ke GPIO18, SCK ke GPIO5, MOSI ke GPIO27, MISO ke GPIO19, RST ke GPIO14, DIO0 ke GPIO26.
+
+2) Gateway ESP32 + LoRa + WiFi
+
+             +-------------------+
+             |      ESP32        |
+             |                   |
+             |   3.3V ----+      |
+             |            |      |
+             |           LoRa     |
+             |    5V -----+      |
+             |           /       |
+             |          /        |
+             |  GPIO18 -+ NSS    |
+             |  GPIO5 --+ SCK    |
+             |  GPIO27 -+ MOSI   |
+             |  GPIO19 -+ MISO   |
+             |  GPIO14 -+ RST    |
+             |  GPIO26 -+ DIO0   |
+             |                   |
+             +-------------------+
+
+- Gateway hanya membutuhkan koneksi LoRa yang sama seperti node.
+- Hubungkan gateway ke WiFi agar dapat mengirim data ke `notification_server.py`.
+
+3) Server python (PC/Raspberry Pi/komputer lokal)
+
+  [ESP32 Gateway] --WiFi--> [Server Python] --(optional)--> [Pushover / Smartphone]
+
+Catatan:
+- Pastikan semua GND terhubung antara ESP32 dan modul LoRa.
+- Pastikan modul LoRa diberi tegangan 3.3V, jangan pakai 5V pada pin logika.
+- Gunakan kabel pendek untuk sinyal SPI dan sensor agar koneksi tetap stabil.
