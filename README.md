@@ -19,12 +19,13 @@ Sistem Smart Door Security adalah implementasi ide sistem keamanan pintu berbasi
 ### Arsitektur Sistem
 <img width="1122" height="1402" alt="overview design" src="https://github.com/user-attachments/assets/6f9fc5f2-0525-442e-a790-3a955603caba" />
 
+
 ### Detailed Architecture
 <img width="1672" height="941" alt="detail arsitektur" src="https://github.com/user-attachments/assets/aed296b6-9a96-4680-807c-b4e7e8ce01cc" />
 
 
 ### Diagram Wiring
-![Wiring Diagram](smart-door-security/wiring-diagram.png)
+<img width="1672" height="941" alt="Diagram wiring" src="https://github.com/user-attachments/assets/83778e1d-7929-4684-b5c2-9a72ecec74b7" />
 
 
 
