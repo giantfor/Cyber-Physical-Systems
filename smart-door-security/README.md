@@ -1,12 +1,33 @@
-# Smart Home Door Security System
+# Cyber-Physical-Systems
 
-Sistem ini adalah implementasi ide #1: sistem keamanan pintu berbasis CPS menggunakan ESP32, LoRa, sensor pintu, PIR, dan monitoring melalui server/handphone.
+Proyek Cyber Physical Systems - Implementasi sistem keamanan pintu berbasis ESP32, LoRa, dan sensor IoT.
 
-## Struktur folder
+## Deskripsi Proyek
 
-- `esp32_door_security_node/` - sketch ESP32 node untuk membaca sensor pintu, PIR, dan tegangan baterai.
-- `esp32_lora_gateway/` - sketch ESP32 gateway untuk menerima data LoRa dan mengirimkannya ke server lokal melalui WiFi.
-- `server/` - skrip Python sederhana untuk menerima webhook notifikasi dan mengirim alert ke smartphone (Pushover optional).
+Sistem Smart Door Security adalah implementasi ide sistem keamanan pintu berbasis CPS menggunakan ESP32, LoRa, sensor pintu, PIR, dan monitoring melalui server/handphone.
+
+## Struktur Folder
+
+- `smart-door-security/` - Folder utama proyek
+  - `esp32_door_security_node/` - Sketch ESP32 node untuk membaca sensor pintu, PIR, dan tegangan baterai
+  - `esp32_lora_gateway/` - Sketch ESP32 gateway untuk menerima data LoRa dan mengirimkannya ke server lokal melalui WiFi
+  - `server/` - Skrip Python sederhana untuk menerima webhook notifikasi dan mengirim alert ke smartphone
+  - `smartphone-webhook-app/` - Aplikasi smartphone berbasis browser untuk menampilkan alert
+
+## Gambar Desain Sistem
+
+### Arsitektur Sistem
+<img width="1122" height="1402" alt="overview design" src="https://github.com/user-attachments/assets/6f9fc5f2-0525-442e-a790-3a955603caba" />
+
+
+### Detailed Architecture
+<img width="1672" height="941" alt="detail arsitektur" src="https://github.com/user-attachments/assets/aed296b6-9a96-4680-807c-b4e7e8ce01cc" />
+
+
+### Diagram Wiring
+<img width="1672" height="941" alt="Diagram wiring" src="https://github.com/user-attachments/assets/83778e1d-7929-4684-b5c2-9a72ecec74b7" />
+
+
 
 ## Fitur
 
@@ -17,7 +38,11 @@ Sistem ini adalah implementasi ide #1: sistem keamanan pintu berbasis CPS menggu
 - Gateway WiFi untuk mengirim data ke server atau aplikasi smartphone
 - Notifikasi alert ke smartphone ketika pintu dibuka atau gerakan terdeteksi
 
-## Hardware yang direkomendasikan
+## Dashboard system
+<img width="897" height="791" alt="Dashboard" src="https://github.com/user-attachments/assets/f99d3638-7aae-426d-b72e-caa68e39b625" />
+
+
+## Hardware yang Direkomendasikan
 
 - ESP32 DevKit atau modul ESP32 lain
 - Modul LoRa SX1276/78 (misalnya RFM95/96/98)
@@ -26,7 +51,25 @@ Sistem ini adalah implementasi ide #1: sistem keamanan pintu berbasis CPS menggu
 - Resistor pembagi tegangan untuk pembacaan baterai
 - LED/status indicator
 
-## Petunjuk umum
+## Konfigurasi Gateway
+
+Sebelum mengunggah sketch ke ESP32 gateway, pastikan Anda sudah mengisi nilai berikut di `esp32_lora_gateway/esp32_lora_gateway.ino`:
+
+- `WIFI_SSID` : nama jaringan WiFi Anda
+- `WIFI_PASSWORD` : kata sandi WiFi Anda
+- `NOTIFICATION_SERVER_URL` : alamat server notifikasi yang menjalankan `server/notification_server.py`
+
+Contoh:
+
+```cpp
+const char* WIFI_SSID = "MyHomeWiFi";
+const char* WIFI_PASSWORD = "MyPassword123";
+const char* NOTIFICATION_SERVER_URL = "http://192.168.1.100:8000/alert";
+```
+
+Pastikan komputer/server yang menjalankan `notification_server.py` memiliki alamat IP statis atau alamat yang dapat diakses dari ESP32 gateway.
+
+## Petunjuk Umum
 
 1. Unggah sketch `esp32_door_security_node.ino` ke ESP32 sensor node.
 2. Unggah sketch `esp32_lora_gateway.ino` ke ESP32 gateway yang terhubung ke WiFi.
@@ -48,14 +91,3 @@ Lihat `pushover-example.md` untuk langkah konfigurasi `PUSHOVER_TOKEN`, `PUSHOVE
 
 Terdapat contoh aplikasi smartphone berbasis browser di folder `smartphone-webhook-app/`.
 - `smartphone-webhook-app/index.html` : tampilan web untuk menampilkan alert.
-- `smartphone-webhook-app/server.py` : server Python sederhana untuk menyajikan halaman dan endpoint JSON.
-
-## Integrasi Kamera Smartphone
-
-Skrip ini tidak langsung mengontrol kamera smartphone, tetapi proses alert memungkinkan Anda melakukan langkah berikut:
-
-- Terima notifikasi di smartphone saat peristiwa terjadi
-- Buka aplikasi kamera atau CCTV smartphone untuk melihat area pintu
-- Atau sambungkan dengan aplikasi home security yang mendukung snapshot/journaling
-
-Untuk integrasi lanjutan, Anda bisa membuat aplikasi smartphone yang menerima webhook kemudian membuka kamera atau memuat URL CCTV.
